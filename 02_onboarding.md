@@ -9,7 +9,7 @@ in each word and print the resulting variable to screen.
 
 ```python
 name = input("What is your name?")
-name = name.capitalize()
+name = name.title()
 print("Name:", name)
 ```
 
@@ -60,4 +60,27 @@ You may consider `input()` a step in your learning that you are not likely to us
 10. You may want to colorize the prompt or output or hide the input when entering secret information
     such as passwords. You can use [rich](https://github.com/Textualize/rich) library.
 
-11. What name should we use in an example? What is we are out of imagination? Let's generate it with [faker](https://faker.readthedocs.io/en/master/) library.
+11. What name should we use in an example? What if we are out of imagination? Let's generate it with [faker](https://faker.readthedocs.io/en/master/) library. Code to try:
+
+```python
+from faker import Faker
+
+fake = Faker('en_IN')
+
+for _ in range(20):
+   print(fake.first_name(), fake.last_name())
+```
+
+12. Explain how the following pipeline works:
+
+```console
+>> echo ishita mahajan | python input.py
+What is your name?
+Name: Ishita Mahajan
+
+>> cat input.py
+name = input("What is your name?")
+name = name.title()
+print()
+print("Name:", name)
+```

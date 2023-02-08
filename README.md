@@ -10,9 +10,9 @@ Start coding:
 4. Reading and scraping data from web: `requests` and `BS4`
 5. Querying and building APIs. `requests` and `FastAPI`
 6. Tables and dataframes using Excel and `pandas`.
-8. SQL with `SQLModel` and `sqlite`.
-7. `streamlit` for dashboards.
-8. Visualisations: `matplotlib` and whatever other library you choose.
+7. SQL with `SQLModel` and `sqlite`.
+8. `streamlit` for dashboards.
+9. Visualisations: `matplotlib` and whatever other library you choose.
 
 Bank app design:
 
@@ -40,7 +40,7 @@ Research tools:
 
 1. Bibliography with `manubot`
 2. `pandoc` and `quarto` document management
-3. Extract video subtitles with `youtube-dl` 
+3. Extract video subtitles with `youtube-dl`
 4. ChatGPT companion for paper reading
 5. Notetaking and Zettelkasten
 
