@@ -10,21 +10,22 @@ print(balances)
 balances["jose"] = 20.5
 print(balances)
 
-# transfer 10 from jose to rajiv 
+# transfer 10 from jose to rajiv
 balances["jose"] = balances["jose"] - 10
 balances["rajiv"] = balances["rajiv"] + 10
 print(balances)
 
-# transfer 10 from jose to sara 
+# transfer 10 from jose to sara
 balances["jose"] -= 10
 balances["sara"] += 10
 print(balances)
 
-# transfer 5 from jose to bank and close account 
-balances["jose"] -= .5
-balances["bank"] += .5
+# transfer 5 from jose to bank and close account
+balances["jose"] -= 0.5
+balances["bank"] += 0.5
 del balances["jose"]
 print(balances)
+
 
 # %%
 def transfer(balances, from_user, to_user, amount):
@@ -99,26 +100,37 @@ accounts.raw_transfer(from_user="jose", to_user="sara", amount=10)
 print(accounts.balances)
 
 from pydantic import BaseModel
+from typing import Literal
+
 
 class PaymentEvent(BaseModel):
     pass
 
+
 class AddUser(PaymentEvent):
+    operation: Literal["add_user"] = "add_user"
     name: str
+
 
 class DeleteUser(PaymentEvent):
+    operation: Literal["delete_user"] = "delete_user"
     name: str
 
+
 class Topup(PaymentEvent):
+    operation: Literal["topup"] = "topup"
     user: str
     amount: int
 
+
 class RawTransfer(PaymentEvent):
-    to_user: str
+    operation: Literal["raw_transfer"] = "raw_transfer"
     from_user: str
+    to_user: str
     amount: int
 
-events = [
+
+event_objects = [
     AddUser(name="rajiv"),
     AddUser(name="sara"),
     AddUser(name="jose"),
@@ -127,7 +139,7 @@ events = [
     Topup(user="jose", amount=30),
     RawTransfer(from_user="jose", to_user="rajiv", amount=10),
     RawTransfer(from_user="jose", to_user="sara", amount=10),
-    DeleteUser(name="jose")
+    DeleteUser(name="jose"),
 ]
 
 
@@ -142,17 +154,41 @@ def process_event(accounts, event):
 
 
 more_accounts = Accounts()
-for event in events:
+for event in event_objects:
     more_accounts = process_event(more_accounts, event)
 print(more_accounts.balances)
 
 from pydantic import BaseModel
-from typing import List, Union
-Payment = Union[AddUser, Topup, RawTransfer]
+from typing import List
 
 
 class Events(BaseModel):
-    events: List[Payment]
+    events: List[PaymentEvent]
 
-es = Events(events=events).dict()
+
+es = Events(events=event_objects).dict()
 print(es)
+
+assert es == {
+    "events": [
+        {"operation": "add_user", "name": "rajiv"},
+        {"operation": "add_user", "name": "sara"},
+        {"operation": "add_user", "name": "jose"},
+        {"operation": "topup", "user": "rajiv", "amount": 240},
+        {"operation": "topup", "user": "sara", "amount": 140},
+        {"operation": "topup", "user": "jose", "amount": 30},
+        {
+            "operation": "raw_transfer",
+            "to_user": "rajiv",
+            "from_user": "jose",
+            "amount": 10,
+        },
+        {
+            "operation": "raw_transfer",
+            "to_user": "sara",
+            "from_user": "jose",
+            "amount": 10,
+        },
+        {"operation": "delete_user", "name": "jose"},
+    ]
+}
