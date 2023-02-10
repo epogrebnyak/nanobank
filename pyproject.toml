@@ -11,6 +11,9 @@ python = "^3.8"
 Faker = "^16.7.0"
 
 
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.21.1"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
