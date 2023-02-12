@@ -41,14 +41,14 @@ print(balances)
 assert balances == {"bank": 0, "rajiv": 50, "sara": 150, "jose": 10}
 
 # Problems:
-# 1. Overspending
+# 1. Overspending.
 print(transfer(balances, "jose", "sara", 199))
 
-# 2. Not earning money
+# 2. Bank not earning money.
 print(balances["bank"])
 
-# 3. Cannot save the state of the accounts and read back
+# 3. Cannot save the state of the accounts and read back.
 
-# 4. Cannot prove correctness - no tests
+# 4. Cannot prove correctness - no tests.
 
 # 5. There are situations where the program will crash or misbehave.

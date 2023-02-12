@@ -23,16 +23,16 @@ class CurrentAccountsBase:
         self.own_account += amount
 
     @property
-    def users(self):
-        """List all users with current accounts."""
-        # Implement here - you need to list all keys from self.balances dictionary.
-
-    @property
     def all_balances(self):
         return {**self.client_balances, "bank": self.own_account}
 
 
 class CurrentAccounts(CurrentAccountsBase):
+    @property
+    def users(self):
+        """List all users with current accounts."""
+        # Implement here - you need to list all keys from self.balances dictionary.
+
     def add_users(self, names):
         """Write docstring here."""
         # Write code here
@@ -53,4 +53,5 @@ if __name__ == "__main__":
     accounts.deposit("jose", 30)
     accounts.move("jose", "rajiv", 10)
     accounts.move(from_user="jose", to_user="sara", amount=10)
+    assert accounts.client_balances == {"rajiv": 150, "sara": 250, "jose": 10}
     print(accounts.client_balances)

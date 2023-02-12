@@ -1,3 +1,11 @@
+"""Start server before this script:
+
+  poetry run uvicorn payments.app:app --reload 
+
+In another terminal run this script.  
+
+"""
+
 commands = """
 /create/users/random?n=3
 /create/user?name=pavel&amount=600.5
@@ -9,6 +17,7 @@ commands = """
 /user/pavel
 /user/olga
 /balances
+
 /fee?amount=100
 """
 
@@ -24,5 +33,9 @@ for line in lines:
     print("Response:")
     pprint(data)
 
-# Create a new account and all user amounts to this account.
-#
+# Excercises:
+# - What happens if you run this code again? Are there new users? Why are they being added?
+# - Start an account in your name and deposit some money.
+# - Start another account in your name and deposit some money.
+# - Move all money to one account. Beware of the fees.
+# - What parts of this API are realistic and what not. Explain why.

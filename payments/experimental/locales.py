@@ -5,7 +5,6 @@ from random import randint
 def fake_name(locale="id_ID"):
     fake = Faker(locale)
     _name = fake.first_name()
-    n = min(5, len(_name))
     return _name[:5].lower()
 
 
@@ -15,5 +14,5 @@ def fake_amount(a, b):
 
 if __name__ == "__main__":
     for _ in range(10):
-        x = fake_name(), fake_amount(5, 75)
+        x = fake_name(), fake_amount(1, 50)
         print(x)
