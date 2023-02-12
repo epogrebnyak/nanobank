@@ -2,8 +2,8 @@
 
 ## Quick answers
 
-- First pick: [Google Colab](https://colab.research.google.com/)
-- Try next: [repl.it](https://replit.com/) and [pydyode console][pyodide_console]
+- First pick: [Google Colab](https://colab.research.google.com/).
+- Try next: [repl.it](https://replit.com/) and [pydyode console][pyodide_console].
 - More capabilities: Anaconda and VS Code.
 
 ## In your browser
@@ -19,8 +19,8 @@ to a comprehensive remote IDE with good interface.
 
 You can also use and [in-browser REPL from pydyode][pyodide_console].
 It is the same environment that you get when running `python -i` command locally.
-`pydyode` is an exciting project as the code runs entirely in browser --
-there is no server behind it (Colab and repl.it provision a virtual machine for you).
+`pydyode` is an exciting project because the code runs entirely in browser --
+there is no server behind it while Colab and repl.it provision a virtual machine for you.
 
 [pyodide_console]: https://pyodide.org/en/stable/console.html
 
