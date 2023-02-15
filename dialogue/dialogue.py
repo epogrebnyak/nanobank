@@ -29,14 +29,15 @@ def get_selection(message, options):
         else:
             print("Please enter any of:", " ".join(options))
 
+
 # input
 p = get_number("How much are you depositing?")
 r = get_number("At which annual interest rate (in percent)?")
 t = get_number("How many years are you planning to invest for?")
 ans = get_selection("[c]ompound or [f]lat rate?", ["c", "f"])
-interest_func = dict(c=compound_interest, f=simple_interest)[ans]
 
 # all of the calculation logic here in one place
+interest_func = dict(c=compound_interest, f=simple_interest)[ans]
 fv = p * interest_func(annual_rate=r / 100, years=t)
 # output
 currency = "R"
